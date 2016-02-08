@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="HelloApp">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+    <script src="../../../node_modules/angular/angular.min.js"></script>
+    <script src="helloworld.js"></script>
+</head>
+<body ng-controller="HelloController as helloCtrl">
+<input type="text" ng-model="helloCtrl.name" />
+<p>Hello,{{helloCtrl.name}}!</p>
+
+
+
+</body>
+</html>
