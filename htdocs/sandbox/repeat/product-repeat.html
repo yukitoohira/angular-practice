@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ProductRepeatApp">
+<head>
+    <meta charset="UTF-8">
+    <title>product-repeat</title>
+</head>
+<script src="../../../node_modules/angular/angular.min.js"></script>
+<script src="product-repeat.js"></script>
+<body ng-controller="ProductRepeatController as prodRepCtrl">
+<table>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>price</th>
+    </tr>
+<tr ng-repeat="product in prodRepCtrl.products">
+    <td>{{product.id}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+</tr>
+</table>
+
+</body>
+</html>
