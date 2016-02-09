@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="ArticleApplication">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div ng-controller="ArticleController as ctrl">
+    {{ctrl.message}}
+    <div id="article-header-list">
+        <ul ng-repeat="articleHeader in ctrl.headers">
+            <li data-id="{{articleHeader.id}}">{{articleHeader.title}}</li>
+        </ul>
+    </div>
+    <div id="article-editor">
+        <input type="text" id="article-editor-title"/>
+        <textarea rows="4" cols="40" id="article-editor-contents"></textarea>
+    </div>
+    <my-hello></my-hello>
+</div>
+</body>
+</html>
