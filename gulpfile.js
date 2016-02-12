@@ -26,7 +26,6 @@ gulp.task('angular', function () {
         .pipe(plumber())
         .pipe(concat('bundle.min.js'))
         .pipe(babel())
-        .pipe(uglify())
         .pipe(gulp.dest('dist'));
 });
 

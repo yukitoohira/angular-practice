@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular UI-router</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+</head>
+<body ng-app="FormApplication">
+<div ng-controller="FormController as myCtrl">
+    <div class="container">
+        <h1 ng-bind="myCtrl.message"></h1>
+        <form name="myForm" ng-submit="myCtrl.onsubmit()" novalidate>
+            <div>
+                <label for="mail">メールアドレス：</label><br/>
+                <input id="mail" name="mail" type="email" ng-model="myCtrl.user.mail" class="form-control" required/>
+            <span ng-show="myForm.mail.$error.required">
+                mail address is required.
+            </span>
+            <span ng-show="myForm.mail.$error.email">
+                This is invalid format.
+            </span>
+            </div>
+            <div>
+                <label for="passwd">パスワード：</label><br/>
+                <input id="passwd" name="passwd" class="form-control" type="password" ng-model="myCtrl.user.passwd"
+                       required ng-minlength="6"/>
+            <span ng-show="myForm.passwd.$error.required">
+                パスワードは必須です.
+            </span>
+            <span ng-show="myForm.passwd.$error.minlength">
+                パスワードは6文字以上で入力してください.
+            </span>
+            </div>
+            <div>
+                <label for="name">名前：</label><br/>
+                <input id="name" name="name" type="text" ng-model="myCtrl.user.name" class="form-control" required
+                       ng-minlength="3"
+                       ng-maxlength="10"/>
+            <span ng-show="myForm.name.$error.minlength">
+                名前は3文字以上で入力してください。
+            </span>
+            <span ng-show="myForm.name.$error.maxlength">
+                名前は10文字以内で入力してください。
+            </span>
+            </div>
+            <div>
+                <label for="memo">備考</label><br/>
+                <textarea id="memo" name="memo" rows="5" cols="30" ng-model="myCtrl.user.memo" ng-maxlength="10"
+                          class="form-control"></textarea>
+            <span ng-show="myForm.memo.$error.maxlength">
+                備考は10文字以内で入力してください。
+            </span>
+            </div>
+            <div>
+                <br/>
+                <input type="submit" value="登録" class="btn btn-primary pull-right" ng-disabled="myForm.$invalid"/>
+            </div>
+        </form>
+    </div>
+    <div>
+        書籍:<br />
+        <label ng-repeat-start="book in myCtrl.books">
+            <input type="radio" ng-model="myCtrl.data.book" ng-value="book.isbn" name="book" />
+            {{book.title}}
+        </label>
+        <br ng-repeat-end />
+    </div>
+</div>
+
+<script>
+    angular.module('FormApplication', [])
+            .controller('FormController', ['BookValue', function (BookValue) {
+                this.message = 'Hello';
+                this.data = {book: 'hoge'};
+                this.books = BookValue();
+
+                this.onsubmit = function () {
+                    console.log(this.user);
+                    alert('提出しました！');
+                };
+            }])
+            .value('BookValue', function () {
+                return [{
+                    id: '1',
+                    title: 'Perfect Java',
+                    price: 2600
+                }, {
+                    id: '2',
+                    title: 'Perfect Python',
+                    price: 3000
+                }]
+            });
+
+</script>
+</body>
+</html>
