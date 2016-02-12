@@ -4,6 +4,7 @@ angular.module('ArticleApplication', ['ui.router'])
         $stateProvider.state('top', {
             url: '/',
             templateUrl: 'templates/contents.html',
-            controller: 'ArticleController as ctrl'
+            controller: 'ArticleController',
+            controllerAs:'article'
         })
     });
