@@ -29,7 +29,7 @@ gulp.task('serve', function () {
 });
 
 gulp.task('templates', function () {
-    gulp.src('src/**/*.html')
+    gulp.src('htdocs/templates/**/*.html')
         .pipe(ngTemplateCache({
             standalone: true
         }))
