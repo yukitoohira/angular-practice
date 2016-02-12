@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>template include</title>
+    <script src="../../../node_modules/angular/angular.min.js"></script>
+</head>
+<body>
+<div>
+    <select id="hoge"></select>
+
+</div>
+
+
+<div class="box" ng-include="template" onload="onload()"></div>
+
+<script>
+    angular.module('myApp', [])
+            .controller('MyController', ['$scope', function ($scope) {
+                $scope.templates = [
+                    {title: 'execution', url: 'templates/execution.html'},
+                    {title: 'tempo', url: 'templates/tempo.html'}
+                ];
+
+                $scope.onload = function () {
+                    console.log($scope.template);
+                }
+            }]);
+</script>
+</body>
+</html>
